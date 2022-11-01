@@ -35,8 +35,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   top: 40,
                   right: 10,
                   child: InkWell(
-                    onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Profile())),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Profile(
+                                  admin: true,
+                                ))),
                     child: Hero(
                       tag: "profile",
                       child: Container(
@@ -90,10 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 itemCount: cardcont.length,
                 itemBuilder: (context, index) => _contain(
-                  cardcont.elementAt(index).name,
-                  cardcont.elementAt(index).pic,
-                  cardcont.elementAt(index).page
-                ),
+                    cardcont.elementAt(index).name,
+                    cardcont.elementAt(index).pic,
+                    cardcont.elementAt(index).page),
               ),
             )
           ],
@@ -103,35 +106,59 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<_CardContainer> cardcont = [
-    _CardContainer("Branch", "assets/undraw_New_entries_re_cffr.jpg", AllList(Type: "Branch List"),
-        ),
-    _CardContainer("Lecturer", "assets/undraw_Add_user_re_5oib.png", AllList(Type: "Teacher List"),
-        ),
     _CardContainer(
-        "Subjects", "assets/addsubject.png", AllList(Type: "Subject List"), ),
-    _CardContainer("Edit Schedule", "assets/undraw_Time_management_re_tk5w.png",
-        AllList(Type: "Time Table"), ),
+      "Branch",
+      "assets/undraw_New_entries_re_cffr.jpg",
+      AllList(Type: "Branch List"),
+    ),
     _CardContainer(
-        "Add Notice", "assets/undraw_Content_re_33px.png", AllList(Type: "Notice"), ),
-    _CardContainer("Attendence", "assets/undraw_Work_in_progress_re_byic.png",
-        TakeAttendence(), ),
+      "Lecturer",
+      "assets/undraw_Add_user_re_5oib.png",
+      AllList(Type: "Teacher List"),
+    ),
+    _CardContainer(
+      "Subjects",
+      "assets/addsubject.png",
+      AllList(Type: "Subject List"),
+    ),
+    _CardContainer(
+      "Edit Schedule",
+      "assets/undraw_Time_management_re_tk5w.png",
+      AllList(Type: "Time Table"),
+    ),
+    _CardContainer(
+      "Add Notice",
+      "assets/undraw_Content_re_33px.png",
+      AllList(Type: "Notice"),
+    ),
+    _CardContainer(
+      "Attendence",
+      "assets/undraw_Work_in_progress_re_byic.png",
+      TakeAttendence(),
+    ),
     // _CardContainer(
     // "Teachers List", "assets/undraw_chore_list_re_2lq8.png", Profile(),""),
     _CardContainer(
-        "Ragistar", "assets/undraw_task_list_6x9d.png", AllList(Type: "Ragistar"), ),
-    _CardContainer("Students", "assets/undraw_mathematics_4otb.png", AllList(Type: "Student List"),
-        ),
+      "Ragistar",
+      "assets/undraw_task_list_6x9d.png",
+      AllList(Type: "Ragistar"),
+    ),
+    _CardContainer(
+      "Students",
+      "assets/undraw_mathematics_4otb.png",
+      AllList(Type: "Student List"),
+    ),
   ];
 
-  Widget _contain(String name, String pic ,Widget page) {
+  Widget _contain(String name, String pic, Widget page) {
     return Hero(
       tag: name,
       child: Card(
         color: Colors.white,
         elevation: 3,
         child: InkWell(
-          onTap: () => Navigator.push(context,
-              MaterialPageRoute(builder: (context) => page)),
+          onTap: () => Navigator.push(
+              context, MaterialPageRoute(builder: (context) => page)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -164,5 +191,9 @@ class _CardContainer {
   final String pic;
   final Widget page;
   // final String pageTitle;
-  _CardContainer(this.name, this.pic, this.page, );
+  _CardContainer(
+    this.name,
+    this.pic,
+    this.page,
+  );
 }

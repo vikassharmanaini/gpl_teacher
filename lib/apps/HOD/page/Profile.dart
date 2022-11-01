@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({super.key});
+  final bool admin;
+  const Profile({super.key, this.admin = false});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<Profile> createState() => _ProfileState(admin);
 }
 
 class _ProfileState extends State<Profile> {
+  final bool _isadmin;
+
   String _profileImg =
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg";
   String _name = "Cheeku Mishra";
@@ -19,15 +22,18 @@ class _ProfileState extends State<Profile> {
   String _qualification = "B. Tech";
   String _joinyear = "2020";
   String _email = "swadesh@gmail.com";
-  bool _admin = true;
+
+  _ProfileState(this._isadmin);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        heroTag: "edit",
-        onPressed: () => {},
-        child: Icon(Icons.edit),
-      ),
+      floatingActionButton: (_isadmin == true)
+          ? FloatingActionButton(
+              heroTag: "edit",
+              onPressed: () => {},
+              child: Icon(Icons.edit),
+            )
+          : null,
       body: SafeArea(
         child: ListView(
           children: [
